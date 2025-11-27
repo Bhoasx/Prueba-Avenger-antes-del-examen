@@ -44,9 +44,15 @@ public class Ventana {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if(e.getSource() == buscarIdButton) {
-                        int IdAvenger = Integer.parseInt(txtbin.getText());
-                        lista.Busquedabinaria(IdAvenger);
+                    if(e.getSource() == Ventana.this.buscarIdButton) {
+                        int IdAvenger = Integer.parseInt(Ventana.this.txtbin.getText());
+                        Avengers busca = Ventana.this.lista.Busquedabinaria(IdAvenger);
+                        if (busca == null){
+                            JOptionPane.showMessageDialog(null, "No hay ningun heroe con ese Id ");
+                        } else {
+                            Ventana.this.txtBusquedaBin.setText(busca.toString());
+                        }
+
                         SetearDatos();
                     }
 
@@ -59,27 +65,13 @@ public class Ventana {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
-                    //Nunca te olvides poner condicion tomando la accion y comparando el boton seleccionado
-                    //Despues da Error cuando hay mas botones '
-
-
-                    //si porq cuando hay muchos botones da error haz esa buena practica y no tendras nunca error con los botones
-                    //Que no funciona?
-                    // ohhhh aqui, cual es ese de getSource?, que hace
-                    //Toma la accion y la compara con el boton con esta accion nuca se te va a buguear por si precionas otros botones similares
-                    //pero se me volvio a buguear, mira ws
-                    //esq eso no es bug tienes un error sintactico algo no esta funcionando como deberia
-                    //simon, creo q es prb los busqueda, algo los ha de mandar a bucle, o se van contra el null de la lista, algo esta mal, pero nidea la plena
-
-                    // vuelvo a probar?
-                    if(e.getSource() == btnSec) {
-                        int IdAvenger = Integer.parseInt(txtsec.getText());
-                        lista.BusquedaSecuencial(IdAvenger);
-                        SetearDatos();
+                    if (e.getSource() == Ventana.this.btnSec){
+                        int IdAvenger = Integer.parseInt(Ventana.this.txtsec.getText());
+                        Avengers b = Ventana.this.lista.BusquedaSecuencial(IdAvenger);
+                        Ventana.this.txtSec.setText(b.toString());
                     }
-                } catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(null, "El Id debe ser un numero");
+                } catch (Exception ex){
+                    JOptionPane.showMessageDialog(null, "error, en algo...");
                 }
             }
         });

@@ -27,33 +27,56 @@ public class Lista /*extends Exception*/ {
     }
 
     //mi triste intento de busqueda binaria
-    public Avengers Busquedabinaria (int id){
+    public Avengers Busquedabinaria(int id) {
         Avengers r = null;
         int izq = 0;
-        int der = lista.size() -1;
+        int der = this.lista.size() - 1;
+        if (this.lista.isEmpty()) {
+            return null;
+        } else {
+            while(izq <= der) {
+                int medio = (izq + der) / 2;
+                Avengers a = (Avengers)this.lista.get(medio);
+                if (a.getIdAvenger() == id) {
+                    r = a;
+                }
 
-        while (izq <= der){
-            int medio = (izq + der) / 2;
-            Avengers a = lista.get(medio);
-            if (a.getIdAvenger() == id){
-                r = a;
-            } else if (a.getIdAvenger() < id){
-                izq = medio + 1;
+                if (a.getIdAvenger() < id) {
+                    izq = medio + 1;
+                } else {
+                    der = medio - 1;
+                }
+            }
+
+            if (r == null) {
+                return null;
             } else {
-                der = medio - 1;
+                return r;
             }
         }
-        return r;
     }
 
     //otro triste intento de busqueda
     public Avengers BusquedaSecuencial(int idAvenger){
-        List<Avengers> r = new ArrayList<>();
-        for (Avengers a : lista){
-            if (a.getIdAvenger() == lista.size()){
-                r.add(a);
+        Avengers var = null;
+
+        for (Avengers a : this.lista){
+            if (a.getIdAvenger() == idAvenger){
+                var = a;
             }
         }
-        return (Avengers) r;
+        return var;
     }
+
+    /*public Avengers BusquedaSecuencial(int idAvenger) {
+        Avengers r = null;
+
+        for(Avengers a : this.lista) {
+            if (a.getIdAvenger() == idAvenger) {
+                r = a;
+            }
+        }
+
+        return r;
+    }*/
 }
