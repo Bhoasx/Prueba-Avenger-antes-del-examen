@@ -69,7 +69,9 @@ public class Ventana {
                     // ohhhh aqui, cual es ese de getSource?, que hace
                     //Toma la accion y la compara con el boton con esta accion nuca se te va a buguear por si precionas otros botones similares
                     //pero se me volvio a buguear, mira ws
-                    //
+                    //esq eso no es bug tienes un error sintactico algo no esta funcionando como deberia
+                    //simon, creo q es prb los busqueda, algo los ha de mandar a bucle, o se van contra el null de la lista, algo esta mal, pero nidea la plena
+
                     // vuelvo a probar?
                     if(e.getSource() == btnSec) {
                         int IdAvenger = Integer.parseInt(txtsec.getText());
